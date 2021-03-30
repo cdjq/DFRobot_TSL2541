@@ -1,6 +1,6 @@
 #-*- coding: utf-8 -*-
-""" file set_atime_wtime_gain.py
-  # @brief Turn on the ambient light saturation interrupt function
+""" file set_als_saturation_interrupt.py
+  # @brief Turn on the visble light saturation interrupt function
   # @n The experimental phenomena：If the optical data is saturated, the serial port will output a warning
   # @copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
   # @licence     The MIT License (MIT)
@@ -28,7 +28,7 @@ def IO1_callback(channel):#callback function
  
 GPIO.setup(IO1, GPIO.IN)
 '''
-@brief 当IO1从低电平变为高电平，发生FALLING电平跳变时，运行IO1_callback方法
+@brief 当IO1从高电平变成低电平，发生FALLING电平跳变时，运行IO1_callback方法
 '''
 GPIO.add_event_detect(IO1, GPIO.FALLING, callback = IO1_callback)
 

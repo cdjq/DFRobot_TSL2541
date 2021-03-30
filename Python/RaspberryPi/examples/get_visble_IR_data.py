@@ -1,6 +1,6 @@
 #-*- coding: utf-8 -*-
 """ file get_visble_IR_data.py
-  # @brief 获取可见光和红外强度
+  # @brief get visble light and IR raw data.
   # @n The experimental phenomena：The serial port outputs the optical data obtained once a second
   # @copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
   # @licence     The MIT License (MIT)

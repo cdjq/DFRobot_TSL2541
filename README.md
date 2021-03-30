@@ -92,7 +92,8 @@ To use this library, download the library file first, paste it into the \Arduino
   uint16_t getIRData();
 
   /**
-   * @brief  If this bit is set, all flag bits in the STATUS register will be reset whenever the STATUS register is read over I2C.
+   * @brief  If this bit is set, all flag bits in the STATUS register will be reset 
+   * @n      whenever the STATUS register is read over I2C.
    * @param  mode  ture : enable ; false : disable
    */
   void setIntReadClear(bool mode = true);
