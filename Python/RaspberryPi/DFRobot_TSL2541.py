@@ -119,7 +119,7 @@ class DFRobot_TSL2541:
         self._write_reg(self.TSL2541_REG_PERS, apers)
     
     ''' 
-        @brief  Set the wait long time
+        @brief  声明“等待长”后，WTIME设置的等待时间将增加12倍
         @param  mode  True enable  False disenable
     '''
     def set_wait_long_time(self,mode=True):

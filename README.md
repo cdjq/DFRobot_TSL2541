@@ -45,7 +45,7 @@ To use this library, download the library file first, paste it into the \Arduino
   void setWaitTimer(bool mode = true);
 
   /**
-   * @brief  Set the wait long time
+   * @brief  声明“等待长”后，WTIME设置的等待时间将增加12倍。
    * @param  mode  ture : enable ; false : disenable
    */
   void setWaitLong(bool mode = true);
@@ -69,8 +69,8 @@ To use this library, download the library file first, paste it into the \Arduino
   void setALSGain(uint8_t aGain);
 
   /**
-   * @brief  设置增益中断积分
-   * @param  apers :ALS Interrupt Persistence
+   * @brief  计数超出阈值限制的连续可见通道结果的频率。用这个数值与设置的阈值比较，产生中断
+   * @param  apers :ALS Interrupt Persistence 阈值(range: 0x00 -0x0f)
    */
   void setInterruptPersistence(uint8_t apers);
 

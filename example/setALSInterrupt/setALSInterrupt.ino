@@ -3,9 +3,9 @@
  * @brief Turn on the visble light sense interrupt function to obtain the visble light data within the specified range
  * @copyright  Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  * @licence     The MIT License (MIT)
- * @author [yangfeng]<feng.yang@dfrobot.com>
+ * @author [LuoYufeng]<yufeng.luo@dfrobot.com> 
  * @version  V1.0
- * @date  2021-01-26
+ * @date  2021-03-26
  * @get from https://www.dfrobot.com
  * @url  https://github.com/DFRobot/DFRobot_TSL2541
  */

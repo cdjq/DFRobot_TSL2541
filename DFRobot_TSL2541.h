@@ -178,7 +178,8 @@ class DFRobot_TSL2541
      * ---------------------------------------------------------------------------------------------
      * AZ_MODE: 0, Always start at zero when searching the best offset value
      *          1, Always start at the previous (offset_c) with the auto-zero mechanism
-     * AZ_NTH_ITERATION : Run autozero automatically every nth ALS iteration(0=never, 7Fh=only at first ALS cycle, n=every nth time)
+     * AZ_NTH_ITERATION : Run autozero automatically every nth ALS iteration
+     *                    (0=never, 7Fh=only at first ALS cycle, n=every nth time)
      */
     typedef struct { 
         uint8_t   azNTHIteration: 7;
@@ -229,7 +230,7 @@ public:
     void setWaitTimer(bool mode = true);
     
     /**
-     * @brief  Set the wait long time
+     * @brief  声明“等待长”后，WTIME设置的等待时间将增加12倍。
      * @param  mode  ture : enable ; false : disable
      */
     void setWaitLong(bool mode = true);
@@ -253,8 +254,8 @@ public:
     void setALSGain(uint8_t aGain);
     
     /**
-     * @brief  设置增益中断积分
-     * @param  apers :ALS Interrupt Persistence
+     * @brief  计数超出阈值限制的连续可见通道结果的频率。用这个数值与设置的阈值比较，产生中断
+     * @param  apers :ALS Interrupt Persistence 阈值
      */
     void setInterruptPersistence(uint8_t apers);
     

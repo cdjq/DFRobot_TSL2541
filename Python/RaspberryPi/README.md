@@ -42,6 +42,12 @@ python get_xyz_ir_data.py
   '''
   set_wait_timer(self,mode=True)
 
+  '''
+    @brief  声明“等待长”后，WTIME设置的等待时间将增加12倍
+    @param  mode  True enable  False disenable
+  '''
+  def set_wait_long_time(self,mode=True)
+
   ''' 
     @brief  Set the internal integration time
     @param  atime  the internal integration time(range: 0x00 -0xff)
@@ -55,14 +61,14 @@ python get_xyz_ir_data.py
   set_wait_time(self,wtime)
 
   ''' 
-    @brief  Set the channel 0 interrupt threshold
+    @brief  设置可见光中断触发阈值
     @param  ailt   the low 16 bit values(range: 0x0000 -0xffff)
     @param  aiht   the high 16 bit values(range: 0x0000 -0xffff)
   '''
   set_interrupt_threshold(self,ailt,aiht)
 
   ''' 
-    @brief  Set the channel 0 interrupt Persistence
+    @brief  计数超出阈值限制的连续可见通道结果的频率。用这个数值与设置的阈值比较，产生中断
     @param  apers  Interrupt Persistence(range: 0x00 -0x0f)
   '''
   set_interrupt_persistence(self,apers)

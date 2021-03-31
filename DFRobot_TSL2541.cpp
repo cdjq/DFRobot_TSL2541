@@ -11,10 +11,7 @@
 
 #include <DFRobot_TSL2541.h>
 
-DFRobot_TSL2541::~DFRobot_TSL2541() {
-    _cfg3Reg.reservedBit5_6 = 2;
-    _cfg3Reg.reservedBit0_3 = 12;
-}
+DFRobot_TSL2541::~DFRobot_TSL2541() {}
 
 bool DFRobot_TSL2541::begin(void)
 {
@@ -26,6 +23,8 @@ bool DFRobot_TSL2541::begin(void)
         setDevicePower(false);
         return false;
     }
+    _cfg3Reg.reservedBit5_6 = 2;
+    _cfg3Reg.reservedBit0_3 = 12;
     softReset();
     setPowerALSADC();
     readReg(TSL2541_REG_VISADJ, &adjFac, 1);

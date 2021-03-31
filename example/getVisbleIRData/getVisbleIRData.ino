@@ -3,9 +3,9 @@
  * @brief 获取可见光数据和红外数据
  * @copyright  Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  * @licence     The MIT License (MIT)
- * @author [yangfeng]<feng.yang@dfrobot.com>
+ * @author [LuoYufeng]<yufeng.luo@dfrobot.com> 
  * @version  V1.0
- * @date  2021-01-26
+ * @date  2021-03-26
  * @get from https://www.dfrobot.com
  * @url  https://github.com/DFRobot/DFRobot_TSL2541
  */
