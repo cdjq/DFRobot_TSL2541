@@ -1,9 +1,15 @@
 # DFRobot_TCS3430
 
-The device features advanced digital Ambient Light Sensing (ALS) and CIE 1931 Tristimulus Color Sensing (XYZ). Each of the channels has a filter to control its optical response, which allows the device to accurately measure ambient light and sense color. These measurements are used to calculate chromaticity, illuminance and color temperature, all of which are used to support various potential applications.
+The TSL2541 is a very-high sensitivity light-to-digital converter that transforms light <br>
+intensity into a digital signal output capable of direct I²C interface. The ALS sensor <br>
+features 2 output channels, a visible channel and an IR channel. The visible channel has a <br>
+photodiode with a UV and IR blocking filter whereas the IR channel has a photodiode with an <br>
+IR pass filter. Each channel has a dedicated data converter producing a 16-bit output. This <br>
+architecture allows applications to accurately measure ambient light which enables devices <br>
+to calculate illuminance to control a display backlight.<br>
 
 ## 产品链接（https://www.dfrobot.com/）
-    SKU：SEN0403
+    SKU：SEN0426
 
 ## Table of Contents
 
@@ -17,11 +23,11 @@ The device features advanced digital Ambient Light Sensing (ALS) and CIE 1931 Tr
 <content>
 
 ## Summary
-Detection of XYZ tristimulus and infrared data
+获取可见光和红外光强度
 
 ## Installation
 
-To use this library, first download the library to Raspberry Pi, then open the routines folder. To execute one routine, demox.py, type python demox.py on the command line. To execute the get_xyz_ir_data.py routine, for example, you need to type:
+To use this library, download the library file first, paste it into the \Arduino\libraries directory, then open the examples folder and run the demo in the folder.
 
 ```
 python get_xyz_ir_data.py

@@ -1,5 +1,5 @@
 #-*- coding: utf-8 -*-
-""" file set_atime_wtime_gain.py
+""" file set_als_interrupt.py
   # @brief Turn on the ambient light sense interrupt function to obtain the ambient light data within the specified range
   # @n The experimental phenomena：The serial port will output a warning if the optical data exceeds the threshold
   # @copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)

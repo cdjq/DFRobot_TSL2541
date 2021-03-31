@@ -1,5 +1,5 @@
 #-*- coding: utf-8 -*-
-""" file set_atime_wtime_gain.py
+""" file set_als_saturation_interrupt.py
   # @brief Turn on the ambient light saturation interrupt function
   # @n The experimental phenomena：If the optical data is saturated, the serial port will output a warning
   # @copyright   Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
