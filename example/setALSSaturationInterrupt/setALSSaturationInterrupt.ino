@@ -14,20 +14,15 @@
 
 DFRobot_TSL2541 TSL2541;
 
-int LEDpin = 12;
-
 volatile int state = 0;
 
-void handleInterrupt(){
+void interrupt(){
     Serial.println("WARNING: Visble light saturation");
     state = 1;
 }
 
 void setup() {
-    Serial.begin(115200);
-    
-    pinMode(LEDpin,OUTPUT);
-    digitalWrite(LEDpin,HIGH);
+    Serial.begin(9600);
     
     while(!TSL2541.begin()){
         Serial.println("Please check that the IIC device is properly connected");
@@ -95,5 +90,8 @@ void loop() {
     if (state == 1){
         state =0;
         TSL2541.clearIntFlag(); 
+    }else{
+    Serial.println(TSL2541.getVisibleData());
+    delay(1000);
     }
 }

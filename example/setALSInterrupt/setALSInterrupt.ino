@@ -14,11 +14,9 @@
 
 DFRobot_TSL2541 TSL2541;
 
-int LEDpin = 12;
-
 volatile int state = 0;
 
-void handleInterrupt(){
+void interrupt(){
 
   Serial.println("WARNING:The data obtained exceeds the threshold");
   state = 1;
@@ -139,7 +137,7 @@ void setup() {
      * |     0x0F    |   60 consecutive values out of range     |
      * ----------------------------------------------------------
      */
-    TSL2541.setInterruptPersistence(/*apers=*/0x05);
+    TSL2541.setInterruptPersistence(/*apers=*/0x01);
     
     // Set the threshold range(0-65535)
     TSL2541.setVisIntThreshold(/*thresholdL=*/5000,/*thresholdH=*/10000);
@@ -182,6 +180,6 @@ void loop() {
     TSL2541.clearIntFlag(); 
   }else{
     Serial.println(TSL2541.getVisibleData());
-    delay(100);
+    delay(1000);
   }
 }
