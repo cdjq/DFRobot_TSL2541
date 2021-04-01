@@ -166,10 +166,10 @@ python get_xyz_ir_data.py
 
 ## History
 
-- data 2021-01-28
-- version V1.0
+- Data 2021-03-26
+- Version V1.0
 
 
 ## Credits
 
-Written by [yangfeng]<feng.yang@dfrobot.com>,2021,(Welcome to our [website](https://www.dfrobot.com/))
+Written by [LuoYufeng]<yufeng.luo@dfrobot.com>,2021,(Welcome to our [website](https://www.dfrobot.com/))(https://www.dfrobot.com/))

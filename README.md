@@ -51,25 +51,75 @@ To use this library, download the library file first, paste it into the \Arduino
   void setWaitLong(bool mode = true);
 
   /**
-   * @brief  Set the internal integration time of the  four-channel ADCs
-   * @param  aTIme  integration time
+   * @brief  设置ADC的积分时间
+   * @param  aTIme  integration time (0x00-0xFF)
+   * Maximum ALS Value=  min [CYCLES * 1024, 65535]
+   * ---------------------------------------------------------------------
+   * | aTime | Integration Cycles | Integration Time | Maximum ALS Value |
+   * ---------------------------------------------------------------------
+   * |  0x00 |         1          |       2.78ms     |        1023       |
+   * ---------------------------------------------------------------------
+   * |  0x01 |         2          |       5.56ms     |        2047       |
+   * ---------------------------------------------------------------------
+   * |  ...  |        ...         |       ...        |        ...        |
+   * ---------------------------------------------------------------------
+   * |  0x11 |         18         |       50ms       |        18431      |
+   * ---------------------------------------------------------------------
+   * |  0x40 |         65         |       181ms      |        65535      |
+   * ---------------------------------------------------------------------
+   * |  ...  |        ...         |       ...        |        ...        |
+   * ---------------------------------------------------------------------
+   * |  0xff |        256         |       711ms      |        65535      |
+   * ---------------------------------------------------------------------
    */
   void setIntegrationTime(uint8_t aTime);
 
   /**
    * @brief  设置等待时间 
-   * @param  wTime  wait time 
+   * @param  wTime  wait time (0x00-0xFF)
+   * By asserting wlong, in register 0x8D the wait time is given in multiples of 33.4ms (12x).
+   * ----------------------------------------
+   * | wtime | Wait Cycles | Wait Time      |
+   * ----------------------------------------
+   * |  0x00 |      1      | 2.78ms/ 33.4ms |
+   * ----------------------------------------
+   * |  0x01 |      2      | 5.56ms/ 66.7ms |
+   * ----------------------------------------
+   * |  ...  |     ...     |      ...       |
+   * ----------------------------------------
+   * |  0x23 |     36      | 100ms/ 1.20s   |
+   * ----------------------------------------
+   * |  ...  |     ...     |       ...      |
+   * ----------------------------------------
+   * |  0xff |     256     |  711ms/ 8.53s  |
+   * ----------------------------------------
    */
   void setWaitTime(uint8_t wTime);
 
   /**
    * @brief  设置数据测量增益 
-   * @param  aGain  the value of gain
+   * @param  aGain  the value of gain (0-5)
+   * AGAIN: ALS Gain Control. Sets the gain of the ALS DAC.
+   * ----------------------------------------------------------
+   * | Field Value |            ALS GAIN VALUE                |
+   * ----------------------------------------------------------
+   * |     0       |               1/2X Gain                  |
+   * ----------------------------------------------------------
+   * |     1       |               1X Gain                    |
+   * ----------------------------------------------------------
+   * |     2       |               4X Gain                    |
+   * ----------------------------------------------------------
+   * |     3       |               16X Gain                   |
+   * ----------------------------------------------------------
+   * |     4       |               64X Gain                   |
+   * ----------------------------------------------------------
+   * |     5       |               128X Gain                  |
+   * ----------------------------------------------------------
    */
   void setALSGain(uint8_t aGain);
 
   /**
-   * @brief  计数超出阈值限制的连续可见通道结果的频率。用这个数值与设置的阈值比较，产生中断
+   * @brief  设置饱和中断阈值，当计数器读到的值超出阈值时产生中断
    * @param  apers :ALS Interrupt Persistence 阈值(range: 0x00 -0x0f)
    */
   void setInterruptPersistence(uint8_t apers);
@@ -83,7 +133,7 @@ To use this library, download the library file first, paste it into the \Arduino
    * @brief  获取可见光强度
    * @return  可见光强度
    */
-  uint16_t getVisibleData();
+  float getVisibleData();
 
   /**
    * @brief  获取红外光强度
@@ -99,17 +149,10 @@ To use this library, download the library file first, paste it into the \Arduino
   void setIntReadClear(bool mode = true);
 
   /**
-   * @brief  Turn on sleep after interruption
+   * @brief  使能中断后睡眠功能
    * @param  mode  ture : enable ; false : disable
    */
   void setSleepAfterInterrupt(bool mode = true);
-
-  /**
-   * @brief  set az mode
-   * @param  mode  :0, Always start at zero when searching the best offset value
-                   :1, Always start at the previous (offset_c) with the auto-zero mechanism
-   */
-  void setAutoZeroMode(uint8_t mode);
   
   /**
    * @brief  set as nth iteration type(Run autozero automatically every nth ALS iteration)

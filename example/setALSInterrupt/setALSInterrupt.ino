@@ -17,9 +17,7 @@ DFRobot_TSL2541 TSL2541;
 volatile int state = 0;
 
 void interrupt(){
-
-  Serial.println("WARNING:The data obtained exceeds the threshold");
-  state = 1;
+    state = 1;
 }
 
 void setup() {
@@ -175,11 +173,13 @@ void setup() {
 
 }
 void loop() {
-  if (state == 1){
-    state =0;
-    TSL2541.clearIntFlag(); 
-  }else{
-    Serial.println(TSL2541.getVisibleData());
-    delay(1000);
-  }
+    if (state == 1){
+        state =0;
+        Serial.println("WARNING:The data obtained exceeds the threshold");
+        TSL2541.clearIntFlag(); 
+    }else{
+        Serial.print("Vis:");
+        Serial.println(TSL2541.getVisibleData());
+        delay(1000);
+    }
 }

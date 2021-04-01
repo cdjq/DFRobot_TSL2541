@@ -53,8 +53,7 @@ void DFRobot_TSL2541::setDevicePower(bool mode)
     if(mode == true){
         _enableReg.pon = 1;
         writeReg(TSL2541_REG_ENABLE, &_enableReg, 1);
-    }
-    else{
+    } else{
         _enableReg.pon = 0;
         writeReg(TSL2541_REG_ENABLE, &_enableReg, 1);
     }
@@ -65,8 +64,7 @@ void DFRobot_TSL2541::setDeviceALSADC(bool mode)
     if(mode == true){
         _enableReg.aen = 1;
         writeReg(TSL2541_REG_ENABLE, &_enableReg, 1);
-    }
-    else{
+    } else{
         _enableReg.aen = 0;
         writeReg(TSL2541_REG_ENABLE, &_enableReg, 1);
     }
@@ -77,8 +75,7 @@ void DFRobot_TSL2541::setWaitTimer(bool mode)
     if(mode == true){
         _enableReg.wen = 1;
         writeReg(TSL2541_REG_ENABLE, &_enableReg, 1);
-    }
-    else{
+    } else{
         _enableReg.wen = 0;
         writeReg(TSL2541_REG_ENABLE, &_enableReg, 1);
     }
@@ -95,8 +92,7 @@ void DFRobot_TSL2541::setWaitLong(bool mode)
     uint8_t nlong = 0x84;
     if(mode){
         writeReg(TSL2541_REG_CFG0, &wlong, 1);
-    
-    }else{
+    } else{
         writeReg(TSL2541_REG_CFG0, &nlong, 1);
     }
 }
@@ -109,13 +105,13 @@ void DFRobot_TSL2541::setALSGain(uint8_t aGain)
         _cfg2Reg.againMax = 0;
         writeReg(TSL2541_REG_CFG1, &_cfg1Reg, 1);
         writeReg(TSL2541_REG_CFG2, &_cfg2Reg, 1);
-    }else if(aGain == 0){
+    } else if(aGain == 0){
         _cfg1Reg.again=0;
         _cfg2Reg.againl = 0;
         _cfg2Reg.againMax = 0;
         writeReg(TSL2541_REG_CFG1, &_cfg1Reg, 1);
         writeReg(TSL2541_REG_CFG2, &_cfg2Reg, 1);
-    }else if(aGain == 5){
+    } else if(aGain == 5){
         _cfg1Reg.again=3;
         _cfg2Reg.againl = 1;
         _cfg2Reg.againMax = 1;
@@ -144,14 +140,14 @@ void DFRobot_TSL2541::clearIntFlag()
     readReg(TSL2541_REG_STATUS, &buf, 1);
 }
 
-uint16_t DFRobot_TSL2541::getVisibleData()
+float DFRobot_TSL2541::getVisibleData()
 {
     uint8_t buf[2];
     readReg(TSL2541_REG_VISDATAL, buf, 2);
     uint16_t vis = (uint16_t)buf[0] | (uint16_t)(buf[1]<<8);
     if (adjFac < 0x80){
         vis = vis*((float)adjFac / 100 + 1);
-    }else{
+    } else{
         vis = vis*(1 - (((float)adjFac - 0x80) / 100));
     }
     return vis;
@@ -169,7 +165,7 @@ void DFRobot_TSL2541::setIntReadClear(bool mode)
     if (mode){
         _cfg3Reg.intReadClear = 1;
         writeReg(TSL2541_REG_CFG3, &_cfg3Reg, 1);
-    }else{
+    } else{
         _cfg3Reg.intReadClear = 0;
         writeReg(TSL2541_REG_CFG3, &_cfg3Reg, 1);
     }
@@ -181,23 +177,11 @@ void DFRobot_TSL2541::setSleepAfterInterrupt(bool mode)
     if (mode){
         _cfg3Reg.sai = 1;
         writeReg(TSL2541_REG_CFG3, &_cfg3Reg, 1);
-    }else{
+    } else{
         _cfg3Reg.sai = 0;
         writeReg(TSL2541_REG_CFG3, &_cfg3Reg, 1);
     }
 }
-
-void DFRobot_TSL2541::setAutoZeroMode(uint8_t mode)
-{
-    if(mode == 0){
-        _AZCfgReg.azMode = 0;
-    }
-    if(mode == 1){
-        _AZCfgReg.azMode = 1;
-    }
-    writeReg(TSL2541_REG_AZ_CONFIG, &_AZCfgReg, 1);
-}
-
 
 void DFRobot_TSL2541::setAutoZeroNTHIteration(uint8_t value)
 {
@@ -211,7 +195,7 @@ void DFRobot_TSL2541::setALSSaturationInterrupt(bool mode )
     if(mode){
         _intEnabReg.asien = 1;
         writeReg(TSL2541_REG_INTENAB, &_intEnabReg, 1);
-    }else{
+    } else{
         _intEnabReg.asien = 0;
         writeReg(TSL2541_REG_INTENAB, &_intEnabReg, 1);
     }
@@ -223,7 +207,7 @@ void DFRobot_TSL2541::setALSInterrupt(bool mode )
     if(mode){
         _intEnabReg.aien = 1;
         writeReg(TSL2541_REG_INTENAB, &_intEnabReg, 1);
-    }else{
+    } else{
         _intEnabReg.aien = 0;
         writeReg(TSL2541_REG_INTENAB, &_intEnabReg, 1);
     }
@@ -244,7 +228,6 @@ void DFRobot_TSL2541::softReset()
     setALSGain(4);
     setIntReadClear(false);
     setSleepAfterInterrupt(false);
-    setAutoZeroMode(0);
     setAutoZeroNTHIteration(0x7f);
     setALSInterrupt(false);
     setALSSaturationInterrupt(false);
